@@ -9,16 +9,16 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="OpenStack实验环境配置  1.配置Controller node（管理节点）为时间服务器，并配置其他节点从管理节点同步时间 1.1.修改Controller node（管理节点）的配置文件。添加如下内容：`allow 10.0.0.0/24  bindcmdaddress 0.0.0.0  local stratum 10` #启动chrony服务，并设置开机自启    systemctl">
+  <meta name="description" content="OpenStack实验环境配置  1.配置Controller node（管理节点）为时间服务器，并配置其他节点从管理节点同步时间 1.1.修改Controller node（管理节点）的配置文件。添加如下内容：allow 10.0.0.0/24 bindcmdaddress 0.0.0.0 local stratum 10  启动chrony服务，并设置开机自启systemctl enable">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HUIYING">
 <meta property="og:url" content="http://yoursite.com/2017/12/06/OpenStack实验环境配置/index.html">
 <meta property="og:site_name" content="HUIYING">
-<meta property="og:description" content="OpenStack实验环境配置  1.配置Controller node（管理节点）为时间服务器，并配置其他节点从管理节点同步时间 1.1.修改Controller node（管理节点）的配置文件。添加如下内容：`allow 10.0.0.0/24  bindcmdaddress 0.0.0.0  local stratum 10` #启动chrony服务，并设置开机自启    systemctl">
-<meta property="og:updated_time" content="2017-12-06T14:09:33.213Z">
+<meta property="og:description" content="OpenStack实验环境配置  1.配置Controller node（管理节点）为时间服务器，并配置其他节点从管理节点同步时间 1.1.修改Controller node（管理节点）的配置文件。添加如下内容：allow 10.0.0.0/24 bindcmdaddress 0.0.0.0 local stratum 10  启动chrony服务，并设置开机自启systemctl enable">
+<meta property="og:updated_time" content="2017-12-06T14:19:33.431Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HUIYING">
-<meta name="twitter:description" content="OpenStack实验环境配置  1.配置Controller node（管理节点）为时间服务器，并配置其他节点从管理节点同步时间 1.1.修改Controller node（管理节点）的配置文件。添加如下内容：`allow 10.0.0.0/24  bindcmdaddress 0.0.0.0  local stratum 10` #启动chrony服务，并设置开机自启    systemctl">
+<meta name="twitter:description" content="OpenStack实验环境配置  1.配置Controller node（管理节点）为时间服务器，并配置其他节点从管理节点同步时间 1.1.修改Controller node（管理节点）的配置文件。添加如下内容：allow 10.0.0.0/24 bindcmdaddress 0.0.0.0 local stratum 10  启动chrony服务，并设置开机自启systemctl enable">
   
     <link rel="alternative" href="/atom.xml" title="HUIYING" type="application/atom+xml">
   
@@ -194,18 +194,19 @@
         <p>OpenStack实验环境配置</p>
 <hr>
 <h1 id="1-配置Controller-node（管理节点）为时间服务器，并配置其他节点从管理节点同步时间"><a href="#1-配置Controller-node（管理节点）为时间服务器，并配置其他节点从管理节点同步时间" class="headerlink" title="1.配置Controller node（管理节点）为时间服务器，并配置其他节点从管理节点同步时间"></a>1.配置Controller node（管理节点）为时间服务器，并配置其他节点从管理节点同步时间</h1><hr>
-<h2 id="1-1-修改Controller-node（管理节点）的配置文件。添加如下内容："><a href="#1-1-修改Controller-node（管理节点）的配置文件。添加如下内容：" class="headerlink" title="1.1.修改Controller node（管理节点）的配置文件。添加如下内容："></a>1.1.修改Controller node（管理节点）的配置文件。添加如下内容：</h2><pre><code>`allow 10.0.0.0/24
- bindcmdaddress 0.0.0.0
- local stratum 10`
-</code></pre><p>#启动chrony服务，并设置开机自启<br>    <code>systemctl enable chronyd.service
-     systemctl start chronyd.service</code></p>
-<hr>
+<h2 id="1-1-修改Controller-node（管理节点）的配置文件。添加如下内容："><a href="#1-1-修改Controller-node（管理节点）的配置文件。添加如下内容：" class="headerlink" title="1.1.修改Controller node（管理节点）的配置文件。添加如下内容："></a>1.1.修改Controller node（管理节点）的配置文件。添加如下内容：</h2><pre><code>allow 10.0.0.0/24
+bindcmdaddress 0.0.0.0
+local stratum 10
+</code></pre><hr>
+<h2 id="启动chrony服务，并设置开机自启"><a href="#启动chrony服务，并设置开机自启" class="headerlink" title="启动chrony服务，并设置开机自启"></a>启动chrony服务，并设置开机自启</h2><pre><code>systemctl enable chronyd.service
+systemctl start chronyd.service 
+</code></pre><hr>
 <h2 id="1-2-修改其他节点的-etc-chrony-conf配置文件。"><a href="#1-2-修改其他节点的-etc-chrony-conf配置文件。" class="headerlink" title="1.2.修改其他节点的/etc/chrony.conf配置文件。"></a>1.2.修改其他节点的/etc/chrony.conf配置文件。</h2><hr>
-<pre><code>`server controller iburst`
-</code></pre><h2 id="1-3-检验"><a href="#1-3-检验" class="headerlink" title="1.3.检验"></a>1.3.检验</h2><pre><code>`chronyc sources`
+<pre><code>server controller iburst
+</code></pre><h2 id="1-3-检验"><a href="#1-3-检验" class="headerlink" title="1.3.检验"></a>1.3.检验</h2><pre><code>chronyc sources
 </code></pre><hr>
 <h1 id="2-配置yum源（-etc-yum-repo-d-a-repo"><a href="#2-配置yum源（-etc-yum-repo-d-a-repo" class="headerlink" title="2.配置yum源（/etc/yum.repo.d/a.repo)"></a>2.配置yum源（/etc/yum.repo.d/a.repo)</h1><hr>
-<pre><code>`[OpenStack-mitaka]
+<pre><code> [OpenStack-mitaka]
  name = OpenStack Mitaka Repository
  baseurl = http://mirrors.yun-idc.com/centos/7.2.1511/cloud/x86_64/openstack-mitaka/
   #http://mirrors.yun-idc.com 是国内比较快的OpenStack的yum源
@@ -225,37 +226,41 @@
 name = extras
 baseurl = http://mirrors.yun-idc.com/centos/7.2.1511/extras/x86_64/
 enabled=1
-gpgcheck=0`
+gpgcheck=0
 </code></pre><hr>
-<h2 id="3-安装OpenStack客户端"><a href="#3-安装OpenStack客户端" class="headerlink" title="#3.安装OpenStack客户端 #"></a>#3.安装OpenStack客户端 #</h2><pre><code>`yum -y install python-openstackclient
- yum -y install openstack-selinux`
+<h1 id="3-安装OpenStack客户端"><a href="#3-安装OpenStack客户端" class="headerlink" title="3.安装OpenStack客户端"></a>3.安装OpenStack客户端</h1><hr>
+<pre><code>yum -y install python-openstackclient
+yum -y install openstack-selinux
 </code></pre><hr>
 <h1 id="4-安装Mariadb数据库"><a href="#4-安装Mariadb数据库" class="headerlink" title="4.安装Mariadb数据库"></a>4.安装Mariadb数据库</h1><hr>
-<h2 id="4-1-安装软件包"><a href="#4-1-安装软件包" class="headerlink" title="4.1.安装软件包"></a>4.1.安装软件包</h2><pre><code>`yum -y install mariadb mariadb-server python2-PyMySQL`
-</code></pre><h2 id="4-2-编辑文件-etc-my-cnf"><a href="#4-2-编辑文件-etc-my-cnf" class="headerlink" title="4.2.编辑文件/etc/my.cnf"></a>4.2.编辑文件/etc/my.cnf</h2><pre><code>` [mysqld]
-  default-storage-engine=innodb
-  innodb_file_per_table
-  collation-server=utf8_general_ci
-  init-connect=&apos;SET NAMES utf8&apos;
-  character-set-server=utf8`
-</code></pre><h2 id="4-3-初始化"><a href="#4-3-初始化" class="headerlink" title="4.3.初始化"></a>4.3.初始化</h2><pre><code>`mysql_install_db --datadir=&quot;/var/lib/mysql&quot; --user=&quot;mysql&quot;`
-</code></pre><h2 id="4-4-完成启动"><a href="#4-4-完成启动" class="headerlink" title="4.4.完成启动"></a>4.4.完成启动</h2><pre><code>`systemctl start mariadb.service`
-</code></pre><h2 id="4-5-设置数据库管理员root的密码"><a href="#4-5-设置数据库管理员root的密码" class="headerlink" title="4.5.设置数据库管理员root的密码"></a>4.5.设置数据库管理员root的密码</h2><pre><code>`mysql_secure_installation`
+<h2 id="4-1-安装软件包"><a href="#4-1-安装软件包" class="headerlink" title="4.1.安装软件包"></a>4.1.安装软件包</h2><pre><code>yum -y install mariadb mariadb-server python2-PyMySQL
+</code></pre><h2 id="4-2-编辑文件-etc-my-cnf"><a href="#4-2-编辑文件-etc-my-cnf" class="headerlink" title="4.2.编辑文件/etc/my.cnf"></a>4.2.编辑文件/etc/my.cnf</h2><pre><code>[mysqld]
+default-storage-engine=innodb
+innodb_file_per_table
+collation-server=utf8_general_ci
+init-connect=&apos;SET NAMES utf8&apos;
+character-set-server=utf8
+</code></pre><h2 id="4-3-初始化"><a href="#4-3-初始化" class="headerlink" title="4.3.初始化"></a>4.3.初始化</h2><pre><code>mysql_install_db --datadir=&quot;/var/lib/mysql&quot; --user=&quot;mysql&quot;
+</code></pre><h2 id="4-4-完成启动"><a href="#4-4-完成启动" class="headerlink" title="4.4.完成启动"></a>4.4.完成启动</h2><pre><code>systemctl start mariadb.service
+</code></pre><h2 id="4-5-设置数据库管理员root的密码"><a href="#4-5-设置数据库管理员root的密码" class="headerlink" title="4.5.设置数据库管理员root的密码"></a>4.5.设置数据库管理员root的密码</h2><pre><code>mysql_secure_installation
 </code></pre><hr>
-<h2 id="5-NoSQL数据库-管理节点上安装配置MongoDB"><a href="#5-NoSQL数据库-管理节点上安装配置MongoDB" class="headerlink" title="#5.NoSQL数据库(管理节点上安装配置MongoDB)#"></a>#5.NoSQL数据库(管理节点上安装配置MongoDB)#</h2><p>##5.1.安装MongoDB软件包  ##<br>    <code>yum -y install mongodb mongodb-server</code></p>
-<h2 id="5-2-编辑-etc-mongod-conf文件"><a href="#5-2-编辑-etc-mongod-conf文件" class="headerlink" title="5.2.编辑/etc/mongod.conf文件"></a>5.2.编辑/etc/mongod.conf文件</h2><pre><code>`#配置bind_ip项的值为管理节点的IP地址
- bind_ip[=*.*.*.*`
-</code></pre><h2 id="5-3-完成安装启动"><a href="#5-3-完成安装启动" class="headerlink" title="5.3.完成安装启动"></a>5.3.完成安装启动</h2><pre><code>`systemctl start mongod.service`
+<h1 id="5-NoSQL数据库-管理节点上安装配置MongoDB"><a href="#5-NoSQL数据库-管理节点上安装配置MongoDB" class="headerlink" title="5.NoSQL数据库(管理节点上安装配置MongoDB)"></a>5.NoSQL数据库(管理节点上安装配置MongoDB)</h1><hr>
+<p>##5.1.安装MongoDB软件包  ##</p>
+<pre><code>yum -y install mongodb mongodb-server
+</code></pre><h2 id="5-2-编辑-etc-mongod-conf文件"><a href="#5-2-编辑-etc-mongod-conf文件" class="headerlink" title="5.2.编辑/etc/mongod.conf文件"></a>5.2.编辑/etc/mongod.conf文件</h2><pre><code>#配置bind_ip项的值为管理节点的IP地址
+ bind_ip[=*.*.*.*
+</code></pre><h2 id="5-3-完成安装启动"><a href="#5-3-完成安装启动" class="headerlink" title="5.3.完成安装启动"></a>5.3.完成安装启动</h2><pre><code>systemctl start mongod.service
 </code></pre><hr>
-<h2 id="6-消息队列服务（管理节点-安装RabbitMQ消息队列服务"><a href="#6-消息队列服务（管理节点-安装RabbitMQ消息队列服务" class="headerlink" title="#6.消息队列服务（管理节点)(安装RabbitMQ消息队列服务)#"></a>#6.消息队列服务（管理节点)(安装RabbitMQ消息队列服务)#</h2><h2 id="6-1-安装软件包"><a href="#6-1-安装软件包" class="headerlink" title="6.1.安装软件包"></a>6.1.安装软件包</h2><pre><code>`yum -y install rabbitmq-server`
-</code></pre><h2 id="6-2-启动"><a href="#6-2-启动" class="headerlink" title="6.2.启动"></a>6.2.启动</h2><pre><code>`systemctl start rabbitmq-server.service`
-</code></pre><h2 id="6-3-添加用户并为用户赋予读和写的访问权限"><a href="#6-3-添加用户并为用户赋予读和写的访问权限" class="headerlink" title="6.3.添加用户并为用户赋予读和写的访问权限"></a>6.3.添加用户并为用户赋予读和写的访问权限</h2><pre><code>`rabbitmqctl add_user 用户名 密码
- rabbitmqctl set_permissions 用户名 &quot;.*&quot;&quot;.*&quot;&quot;.*&quot;`
+<h1 id="6-消息队列服务（管理节点-安装RabbitMQ消息队列服务"><a href="#6-消息队列服务（管理节点-安装RabbitMQ消息队列服务" class="headerlink" title="6.消息队列服务（管理节点)(安装RabbitMQ消息队列服务)"></a>6.消息队列服务（管理节点)(安装RabbitMQ消息队列服务)</h1><hr>
+<h2 id="6-1-安装软件包"><a href="#6-1-安装软件包" class="headerlink" title="6.1.安装软件包"></a>6.1.安装软件包</h2><pre><code>yum -y install rabbitmq-server
+</code></pre><h2 id="6-2-启动"><a href="#6-2-启动" class="headerlink" title="6.2.启动"></a>6.2.启动</h2><pre><code>systemctl start rabbitmq-server.service
+</code></pre><h2 id="6-3-添加用户并为用户赋予读和写的访问权限"><a href="#6-3-添加用户并为用户赋予读和写的访问权限" class="headerlink" title="6.3.添加用户并为用户赋予读和写的访问权限"></a>6.3.添加用户并为用户赋予读和写的访问权限</h2><pre><code>rabbitmqctl add_user 用户名 密码
+rabbitmqctl set_permissions 用户名 &quot;.*&quot;&quot;.*&quot;&quot;.*&quot;
 </code></pre><hr>
 <h1 id="7-Identity服务认证机制（管理节点安装Memcached服务）（缓存令牌）"><a href="#7-Identity服务认证机制（管理节点安装Memcached服务）（缓存令牌）" class="headerlink" title="7.Identity服务认证机制（管理节点安装Memcached服务）（缓存令牌）"></a>7.Identity服务认证机制（管理节点安装Memcached服务）（缓存令牌）</h1><hr>
 <p>##7.1.安装软件包##</p>
-<pre><code>`yum -y install memcached python-memcached`
-</code></pre><h2 id="7-2-启动服务"><a href="#7-2-启动服务" class="headerlink" title="7.2.启动服务"></a>7.2.启动服务</h2><pre><code>`systemctl start memcached.service`
+<pre><code>yum -y install memcached python-memcached
+</code></pre><h2 id="7-2-启动服务"><a href="#7-2-启动服务" class="headerlink" title="7.2.启动服务"></a>7.2.启动服务</h2><pre><code>systemctl start memcached.service
 </code></pre><hr>
 <h2 id="详细链接："><a href="#详细链接：" class="headerlink" title="详细链接："></a>详细链接：</h2><h2 id="http-blog-51cto-com-wsxxsl-1883843"><a href="#http-blog-51cto-com-wsxxsl-1883843" class="headerlink" title="http://blog.51cto.com/wsxxsl/1883843"></a><a href="http://blog.51cto.com/wsxxsl/1883843" target="_blank" rel="external">http://blog.51cto.com/wsxxsl/1883843</a></h2><h2 id="http-www-mamicode-com-info-detail-1625053-html"><a href="#http-www-mamicode-com-info-detail-1625053-html" class="headerlink" title="http://www.mamicode.com/info-detail-1625053.html"></a><a href="http://www.mamicode.com/info-detail-1625053.html" target="_blank" rel="external">http://www.mamicode.com/info-detail-1625053.html</a></h2><h2 id="https-pypi-python-org-pypi-pythonopenstackclient-downloads"><a href="#https-pypi-python-org-pypi-pythonopenstackclient-downloads" class="headerlink" title="https://pypi.python.org/pypi/pythonopenstackclient#downloads"></a><a href="https://pypi.python.org/pypi/pythonopenstackclient#downloads" target="_blank" rel="external">https://pypi.python.org/pypi/pythonopenstackclient#downloads</a></h2>
       
